@@ -14,11 +14,11 @@ app.config["SECRET_KEY"]="vpa.tricode#887"
 
 @app.route("/")
 def index():
-    return render_template("Home_page.html")
+    return render_template("Home.html")
 
 @app.route("/home")
 def home():
-    return render_template("Home.html")
+    return render_template("Home_page.html")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
