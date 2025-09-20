@@ -4,6 +4,3 @@ google-generativeai==0.8.5
 psutil==5.9.5
 python-dotenv==1.1.0
 deprecated
-'''GOOGLE_GENAI_USE_VERTEXAI=FALSE
-GOOGLE_API_KEY=AIzaSyBYw2hL3tycsh09WM3f1PdFHiIKWqlOONM
-SEARCH_ENGINE_ID=32d84c028dfa04448'''
