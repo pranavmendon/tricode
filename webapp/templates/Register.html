@@ -15,7 +15,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="css.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   </head>
   <body>
     <div class="header">
@@ -36,12 +36,12 @@
         </div>
         <div class="remember-forgot">
           <label><input type="checkbox" />Remember me</label
-          ><a href="forgot.html">Forgot password?</a>
+          ><a href="forgot_password.html">Forgot password?</a>
         </div>
         <br />
         <button type="submit" class="btn">Sign Up</button>
         <div class="register-link">
-          <p>Already have an account?<a href="login.html">Login</a></p>
+          <p>Already have an account?<a href="{{ url_for('login') }}">Login</a></p>
         </div>
       </form>
     </div>
