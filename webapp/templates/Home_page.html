@@ -17,7 +17,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="css.css" />
   </head>
   <body>
     <div class="header">
@@ -25,10 +25,10 @@
       <i class="fa-solid fa-bars"></i>
     </div>
     <div class="second">
-      <a href="signup.html"
+      <a href="{{ url_for('register') }}"
         ><button class="btn btn-primary" type="button">Sign Up</button></a
       >
-      <a href="login.html"
+      <a href="{{ url_for('login') }}"
         ><button class="btn btn-secondary" type="button">Login</button></a
       >
     </div>
