@@ -27,6 +27,7 @@ root_agent=Agent (
                 3. The days and specific times they are available to study.
                 4. Their exam dates, if any.
                 5. Any other specific goals or information they want to include.
+                if the user doesnt mention any one/few of the ones above ask them for it and then provide the planner.
                 The final output should be a clearly structured timetable, preferably in a markdown table format followed by links to videos or webpages in bulletpoints that'd help them as a reference.
                 """,
 
