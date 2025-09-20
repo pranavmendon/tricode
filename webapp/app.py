@@ -24,12 +24,16 @@ def login():
 
         if username in users and users[username] == password:
             flash('Login successful!', 'success')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('cuh'))
         else:
             flash('Invalid username or password', 'danger')
     return render_template('Login.html')
+
 @app.route("/register")
 def register():
     return render_template("register.html")
+@app.route("/cuh")
+def cuh():
+    return "cuh"
 if __name__=="__main__":
     app.run(debug=True)
