@@ -1,10 +1,22 @@
 body {
-  background-color: #1a202c;
+  background-color: #98dfe4;
   color: #edf2f7;
-  accent-color: #84a98c;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: transparent;
+}
+h1 {
+  font-size: 28px;
+  margin: 0;
+    color: #fff;
+    text-align: center;
 }
 .wrapper {
   width: 420px;
@@ -30,7 +42,7 @@ body {
   margin: 30px 0;
 }
 .input-box input {
-  width: 83%;
+  width: 95%;
   height: 60%;
   background-color: transparent;
   border: none;
@@ -114,4 +126,61 @@ body {
 }
 .abc:hover {
   background-color: blue;
+}
+.btn-primary {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid blue;
+  color: blue;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+.second{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+}
+* {
+  box-sizing: border-box;
+}
+i{
+    font-size: larger;
+}
+.faq-section {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  list-style: none;
+}
+.faq-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.faq-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 10px;
 }

@@ -8,7 +8,7 @@ table_agent=Agent(
     description="You will create a well-formatted timetable for the user based on their requirements,make sure its light and doable based on their skill",
     instruction="""
                 Your role is to create a well-formatted timetable for the user tailored to their free time available,their subject requirement,their skill level,and the skill level they wish to achieve.
-                You will create the timetabe with the info the user will provide make sure its doable and not burdening it should be well-formatted in a table structure.
+                You will create the timetable with the info the user will provide make sure its doable and not burdening it should be well-formatted in a table structure.
                 Your final output must be ONLY the timetable in a markdown table format.
                 """
 )
