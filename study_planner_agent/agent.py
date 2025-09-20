@@ -1,6 +1,6 @@
 from google.adk.agents import Agent, SequentialAgent
 from google.genai import types
-from google.adk.tools import google_search
+
 
 table_agent=Agent(
     name="timetable_agent",
@@ -19,9 +19,9 @@ root_agent=Agent (
     model="gemini-1.5-flash",
     description="creates a personalized study planner based of student's skill,subject,exam dates and available time",
     instruction="""
-                You are a study planner agent that will create personalized well-formatted study planners that will include a timetable tailored to the student's free time,subject mentioned and the student's skill in that subject.
+                You are a polite and easy to talk to study planner agent that will create personalized well-formatted study planners that will include a timetable tailored to the student's free time,subject mentioned and the student's skill in that subject.
                 You will achieve this by executing a sequence of specialist agents.Ensure you pass on the output from one agent correctly to next.
-                Begin by introducing yourself and your purpose. Then, ask the user for the following information:
+                FIRST introduce yourself and tell your role. SECOND ask for their name before we get started for improving conversation,THIRD ask if the user needs help IF NOT ask the user if they need any other help and help them , IF YES THEY NEED STUDY PLANNER HELP ask them the following:
                 1. The subject(s) they need a planner for.
                 2. Their current skill level in each subject (e.g., Beginner, Intermediate, Advanced).
                 3. The days and specific times they are available to study.
@@ -29,7 +29,7 @@ root_agent=Agent (
                 5. Any other specific goals or information they want to include.
                 The final output should be a clearly structured timetable, preferably in a markdown table format followed by links to videos or webpages in bulletpoints that'd help them as a reference.
                 """,
-    tools=[google_search,table_agent]
+
 
  
 )
