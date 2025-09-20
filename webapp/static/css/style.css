@@ -1,7 +1,14 @@
+@font-face {
+  font-family:oxanium ;
+  src: url(../fonts/oxanium.ttf);
+}
+
+
+
 body {
   background-color: #010101;
   color: #68b8ed;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: oxanium;
   margin: 0;
   padding: 0;
 }
@@ -190,6 +197,7 @@ i{
 }
 #title{
   font-family: chronopilot;
+  text-shadow: 3px 3px 4px rgba(18, 166, 230, 0.623);
 
 }
 #gs{
