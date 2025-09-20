@@ -15,6 +15,10 @@ body {
   color: #fff;
   border-radius: 10px;
   padding: 30px 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .wrapper h1 {
   font-size: 36px;
