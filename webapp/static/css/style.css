@@ -192,3 +192,10 @@ i{
   font-family: chronopilot;
 
 }
+#gs{
+  margin-top: 20px;
+  
+}
+.cp{
+  display: flex;
+}
