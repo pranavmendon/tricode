@@ -3,7 +3,11 @@ from pymongo import MongoClient
 
 client=MongoClient('mongodb://localhost:27017/')
 db=client.tricode
-users=db.login_data
+#users=db.login_data
+users={
+    "test":"pass123",
+    "vais":"miu"
+}
 
 app=Flask(__name__)
 app.config["SECRET_KEY"]="vpa.tricode#887"
@@ -24,6 +28,8 @@ def login():
         else:
             flash('Invalid username or password', 'danger')
     return render_template('Login.html')
-
+@app.route("/register")
+def register():
+    return render_template("register.html")
 if __name__=="__main__":
     app.run(debug=True)
