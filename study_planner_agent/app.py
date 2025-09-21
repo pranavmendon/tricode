@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+
 from pymongo import MongoClient
 
 client=MongoClient('mongodb://localhost:27017/')
@@ -22,8 +23,10 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-
-        if username in users and users[username] == password:
+        user=users.find_one({"username": username})
+        if user and user['password'] == password:
+            session['user_id'] = str(user['_id']) 
+            session["username"]=user["username"]
             flash('Login successful!', 'success')
             return redirect(url_for('home'))
         else:
@@ -33,11 +36,13 @@ def login():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        confirm_password = request.form.get('confirm_password')
-        if password == confirm_password and "username" not in users:
-            users["password"] = password
+        username = request.form['username']
+        password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        if users.find_one({"username": username}):
+            flash('Username already exists', 'danger')
+            return redirect(url_for('register'))
+        elif password == confirm_password:
             db.users.insert_one({"username": username, "password": password})
             flash('Registration successful!', 'success')
             return redirect(url_for('login'))
@@ -45,5 +50,5 @@ def register():
             flash('Passwords do not match', 'danger')
     return render_template("Register.html")
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
     
