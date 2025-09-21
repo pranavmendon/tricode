@@ -3,11 +3,8 @@ from pymongo import MongoClient
 
 client=MongoClient('mongodb://localhost:27017/')
 db=client.tricode
-#users=db.login_data
-users={
-    "test":"pass123",
-    "vais":"miu"
-}
+users=db.login_data
+
 
 app=Flask(__name__)
 app.config["SECRET_KEY"]="vpa.tricode#887"
@@ -33,8 +30,20 @@ def login():
             flash('Invalid username or password', 'danger')
     return render_template('Login.html')
 
-@app.route("/register")
+@app.route("/register", methods=['GET', 'POST'])
 def register():
-    return render_template("register.html")
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+        if password == confirm_password and username not in users:
+            users[username] = password
+            db.login_data.insert_one({"username": username, "password": password})
+            flash('Registration successful!', 'success')
+            return redirect(url_for('login'))
+        else:
+            flash('Passwords do not match', 'danger')
+    return render_template("Register.html")
 if __name__=="__main__":
     app.run(debug=True)
+    

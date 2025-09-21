@@ -195,15 +195,38 @@ i{
   font-family: chronopilot;
   src: url(../fonts/bruno.ttf); 
 }
+.main{
+  font-size: 23px;
+}
+#div1{
+  font-size: 28px;
+}
+.gst{
+  padding: 30px;
+    background-color: blue;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+@keyframes fadein {
+    100%{opacity: 1;}
+}
+@keyframes slidedown{
+    from{transform: translateY(10%);}
+    to{transform: translateY(0.1%);}
+}
 #title{
   font-family: chronopilot;
   text-shadow: 3px 3px 4px rgba(18, 166, 230, 0.623);
+  animation-name: slidedown,fadein;
+  animation-duration: 1s;
+  animation-fill-mode: forwards,forwards;
+}
 
-}
-#gs{
-  margin-top: 20px;
-  
-}
-.cp{
-  display: flex;
-}
+
