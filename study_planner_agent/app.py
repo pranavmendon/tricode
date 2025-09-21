@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
-from flask_cors import CORS
+
 from pymongo import MongoClient
 
 client=MongoClient('mongodb://localhost:27017/')
@@ -8,7 +8,7 @@ users=db.login_data
 
 
 app=Flask(__name__)
-CORS(app)
+
 app.config["SECRET_KEY"]="vpa.tricode#887"
 
 @app.route("/")
@@ -51,5 +51,5 @@ def register():
             flash('Passwords do not match', 'danger')
     return render_template("Register.html")
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
     
