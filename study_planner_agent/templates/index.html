@@ -125,8 +125,14 @@ async function sendMessage() {
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt: userText })
+            body: JSON.stringify({ message: userInput })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.reply); // <-- now you'll get the message
+            })
+            .catch(err => console.error(err));
         });
+        
 
         // This line converts the agent's JSON response back into a usable format
         const data = await response.json();
