@@ -84,70 +84,70 @@
 </div>
 
 <script>
-    // --- JavaScript Brain ---
+// --- JavaScript Brain ---
 
-    // 1. Get references to our HTML elements
-    const chatBox = document.getElementById('chat-box');
-    const userInput = document.getElementById('user-input');
-    const sendBtn = document.getElementById('send-btn');
+// 1. Get references to our HTML elements
+const chatBox = document.getElementById('chat-box');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
 
-    // 2. IMPORTANT: Set the URL for your agent's API
-    // You must get the port number (like 53468) from your terminal when you run "adk web"
-    const API_URL = 'http://127.0.0.1:53468/8000'; 
+// 2. IMPORTANT: Set the URL for your agent's API
+// You must get the port number from your terminal when you run "adk web"
+// The correct URL is http://127.0.0.1:8000
+const API_URL = 'http://127.0.0.1:8000'; 
 
-    // Function to add a message to the chat box
-    function addMessage(text, sender) {
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message', sender + '-message');
-        messageElement.textContent = text;
-        chatBox.appendChild(messageElement);
-        chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the bottom
+// Function to add a message to the chat box
+function addMessage(text, sender) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message', sender + '-message');
+    messageElement.textContent = text;
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the bottom
+}
+
+// Function to send a message to the agent
+async function sendMessage() {
+    const userText = userInput.value.trim();
+    if (userText === '') return;
+
+    // Display the user's message immediately
+    addMessage(userText, 'user');
+    userInput.value = '';
+
+    try {
+        // Send the message to the agent's API
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            // This line converts your text into the JSON format the agent understands
+            body: JSON.stringify({ prompt: userText })
+        });
+
+        // This line converts the agent's JSON response back into a usable format
+        const data = await response.json();
+        
+        // The agent's reply is likely in 'data.output'
+        const agentText = data.output; 
+
+        // Display the agent's message
+        addMessage(agentText, 'agent');
+
+    } catch (error) {
+        console.error('Error:', error);
+        addMessage('Sorry, something went wrong. Please check the console.', 'agent');
     }
-
-    // Function to send a message to the agent
-    async function sendMessage() {
-        const userText = userInput.value.trim();
-        if (userText === '') return;
-
-        // Display the user's message immediately
-        addMessage(userText, 'user');
-        userInput.value = '';
-
-        try {
-            // Send the message to the agent's API
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                // This line converts your text into the JSON format the agent understands
-                body: JSON.stringify({ prompt: userText })
-            });
-
-            // This line converts the agent's JSON response back into a usable format
-            const data = await response.json();
-            
-            // The agent's reply is likely in 'data.output'
-            const agentText = data.output; 
-
-            // Display the agent's message
-            addMessage(agentText, 'agent');
-
-        } catch (error) {
-            console.error('Error:', error);
-            addMessage('Sorry, something went wrong. Please check the console.', 'agent');
-        }
     }
 
     // 3. Set up event listeners
     sendBtn.addEventListener('click', sendMessage);
     userInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            sendMessage();
-        }
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
     });
 
     // Add a welcome message
     addMessage("Hello! I'm your study planner. How can I help you today?", 'agent');
-
 </script>
 
 </body>
