@@ -96,6 +96,7 @@ const chatBox = document.getElementById('chat-box');
 const userInput = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
 
+
 // 2. IMPORTANT: Set the URL for your agent's API
 // You must get the port number from your terminal when you run "adk web"
 // The correct URL is http://127.0.0.1:8000
@@ -124,7 +125,6 @@ async function sendMessage() {
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            // This line converts your text into the JSON format the agent understands
             body: JSON.stringify({ prompt: userText })
         });
 
@@ -150,6 +150,7 @@ async function sendMessage() {
         sendMessage();
     }
     });
+
 
     // Add a welcome message
     addMessage("Hello! I'm your study planner. How can I help you today?", 'agent');
