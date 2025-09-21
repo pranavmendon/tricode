@@ -218,15 +218,40 @@ i{
     100%{opacity: 1;}
 }
 @keyframes slidedown{
-    from{transform: translateY(10%);}
-    to{transform: translateY(0.1%);}
+    from{transform: translateY(0.1%);}
+    to{transform: translateY(10%);}
+}
+@keyframes slidedown1{
+    from{transform: translateY(-1%);}
+    to{transform: translateY(2%);}
 }
 #title{
   font-family: chronopilot;
   text-shadow: 3px 3px 4px rgba(18, 166, 230, 0.623);
+}
+#head1{
   animation-name: slidedown,fadein;
   animation-duration: 1s;
   animation-fill-mode: forwards,forwards;
-}
+  opacity: 0;
 
+}
+#div1{
+  animation-name: slidedown1,fadein;
+  animation-duration: 1s;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards,forwards;
+  opacity: 0;
+}
+@keyframes slideup{
+    from{transform: translateY(10%);}
+    to{transform: translateY(5%);}
+}
+.second{
+  animation-name: slideup,fadein;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards,forwards;
+  opacity: 0;
+}
 
