@@ -36,9 +36,9 @@ def register():
         username = request.form.get('username')
         password = request.form.get('password')
         confirm_password = request.form.get('confirm_password')
-        if password == confirm_password and username not in users:
-            users[username] = password
-            db.login_data.insert_one({"username": username, "password": password})
+        if password == confirm_password and "username" not in users:
+            users["password"] = password
+            db.users.insert_one({"username": username, "password": password})
             flash('Registration successful!', 'success')
             return redirect(url_for('login'))
         else:
