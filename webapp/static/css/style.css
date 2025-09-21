@@ -9,7 +9,7 @@ body {
   background-color: #010101;
   color: #68b8ed;
   font-family: oxanium;
-  margin: 0;
+  margin: 20px;
   padding: 0;
 }
 .header {
@@ -199,4 +199,12 @@ i{
   font-family: chronopilot;
   text-shadow: 3px 3px 4px rgba(18, 166, 230, 0.623);
 
+}
+#cr{
+  color: #ffffffc1;
+
+
+}
+.main{
+  font-size: 23px;
 }
