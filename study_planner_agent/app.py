@@ -42,7 +42,7 @@ def register():
         if users.find_one({"username": username}):
             flash('Username already exists', 'danger')
             return redirect(url_for('register'))
-        if password == confirm_password:
+        elif password == confirm_password:
             db.users.insert_one({"username": username, "password": password})
             flash('Registration successful!', 'success')
             return redirect(url_for('login'))
