@@ -43,19 +43,13 @@ def register():
         if users.find_one({"username": username}):
             flash('Username already exists', 'danger')
             return redirect(url_for('register'))
-        elif password == confirm_password:
+        if password == confirm_password:
             db.users.insert_one({"username": username, "password": password})
             flash('Registration successful!', 'success')
             return redirect(url_for('login'))
         else:
             flash('Passwords do not match', 'danger')
     return render_template("Register.html")
-@app.route('/chat', methods=['POST'])
-def your_function():
-    # You can access the message from frontend like this:
-    data = request.get_json()
-    user_message = data.get("message", "")
-    return jsonify({"reply": f"You said: {user_message}"})
-
-if __name__ == "__main__":
-    app.run(debug=True,port=5000)
+if __name__=="__main__":
+    app.run(debug=True)
+    
