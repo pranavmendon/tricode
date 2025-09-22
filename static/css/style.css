@@ -138,11 +138,11 @@ h1 {
   background-color: blue;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 25px 45px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 24px;
+  font-size: 35px;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 12px;
@@ -155,7 +155,7 @@ h1 {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 24px;
+  font-size: 35px;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 12px;
@@ -250,6 +250,26 @@ i{
 .second{
   animation-name: slideup,fadein;
   animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards,forwards;
+  opacity: 0;
+}
+#aibot iframe { 
+  width: 100%;
+  height: 79.5vh;
+  border: none;
+  border-radius: 10px;
+}
+#main2{
+  animation-name: fadein,slidedown1;
+  animation-duration: 1s,1s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards,forwards;
+  opacity: 0;
+}
+#main1{
+  animation-name: fadein,slidedown1;
+  animation-duration: 1s,1s;
   animation-delay: 0.5s;
   animation-fill-mode: forwards,forwards;
   opacity: 0;

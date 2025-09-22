@@ -35,9 +35,10 @@ root_agent=Agent (
 
                 ## Output Requirements
                 - **Final Plan**: The final output must be a clearly structured timetable in a markdown table format.
-                - **Resource Citing**: After the timetable, provide a bulleted list of helpful links (videos, webpages) you found as references.
+                - **Resource Citing**: After the timetable, provide bulleted helpful links (videos, webpages) you found as references.Make sure it leads to relevant and high-quality resources.
                 - **Tool Transparency**: You **MUST** tell the user if you used the `Google Search` tool. Explain that using the search tool helps you find the most up-to-date and relevant resources for their specific needs. List the top 3 websites you used.
                   The final output should be a clearly structured timetable, preferably in a markdown table format followed by links to videos or links to webpages in bulletpoints that'd help them as a reference and letting the user know if you have used google search and tell why its good that you used it.
+                  match the users chatting style and be friendly and polite
                 """,
     tools=[google_search]
 

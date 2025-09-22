@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner Agent</title>
+
+    <!--<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            height: 100vh;
+            margin: 50px;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+        }
+        #chat-container {
+            width: 400px;
+            height: 600px;
+            border: 1px solid #000;
+            border-radius: 8px;
+            background-color: rgba(18, 166, 230, 0.623);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            float: right;
+        }
+        #chat-box {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .agent-message {
+            background-color: #e9e9eb;
+            color: #333;
+            align-self: flex-start;
+        }
+        #input-area {
+            display: flex;
+            padding: 10px;
+        }
+        #user-input {
+            flex-grow: 1;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+        #send-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>-->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+</head>
+<body>
+    <div style="text-align: center;">
+<h2>You are now chatting with your Study Planner Agent <br><b style="font-family: chronopilot;">Chronopilot</b>!</h2></div>
+<div id="chat-container">
+    <div id="chat-box">
+        </div>
+    
+    <div id="aibot">
+        <iframe src="http://127.0.0.1:8000/dev-ui/?app=study_planner_agent" frameborder="0"></iframe>
+    </div>
+</div>
+
+
+</script>
+
+</body>
+</html>
