@@ -1,13 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
-
+import subprocess
+import threading
+import platform
 from pymongo import MongoClient
-
-
 
 client=MongoClient('mongodb://localhost:27017/')
 db=client.tricode
 users=db.users
 
+def adk():
+    adk_path = "/Users/pranavmendon/Documents/projects/tricode/.venv/bin/adk"
+    process = subprocess.Popen(
+        ["adk", "web", "--port", "8000"],
+        cwd=adk_path,                  # 👈 This sets the working directory
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        bufsize=1,
+        close_fds=True
+    )
 
 app=Flask(__name__)
 
@@ -15,11 +25,11 @@ app.config["SECRET_KEY"]="vpa.tricode#887"
 
 @app.route("/")
 def index():
-    return render_template("Home.html")
+    return render_template("index.html")
 
 @app.route("/home")
 def home():
-    return render_template("index.html")
+    return render_template("home.html")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -33,7 +43,7 @@ def login():
             return redirect(url_for('home'))
         else:
             return redirect(url_for('login', error='Invalid username or password'))
-    return render_template('Login.html')
+    return render_template('login.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -50,7 +60,9 @@ def register():
             return redirect(url_for('login'))
         else:
             flash('Passwords do not match   ', 'danger')
-    return render_template("Register.html")
-if __name__=="__main__":
+    return render_template("register.html")
+
+
+if __name__=="__main__": 
+    threading.Thread(target=adk, daemon=True).start()
     app.run(debug=True, port=5000)
-    
