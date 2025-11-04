@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+import bcrypt
 import subprocess
 import threading
 from pymongo import MongoClient
@@ -15,7 +16,7 @@ def run_subprocess():
  
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("Neo_ui.html")
 
 @app.route("/home")
 def home():
@@ -27,7 +28,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         user=users.find_one({"username": username})
-        if user and user['password'] == password :
+        if user and bcrypt.checkpw(password.encode("utf-8"), user["password"]):
             session['user_id'] = str(user['_id'])
             session['username'] = username
             return redirect(url_for('home'))
@@ -45,7 +46,8 @@ def register():
             flash('Username already exists', 'danger')
             return redirect(url_for('register'))
         if password == confirm_password:
-            db.users.insert_one({"username": username, "password": password})
+            hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+            db.users.insert_one({"username": username, "password": hashed})
             flash('Registration successful!', 'success')
             return redirect(url_for('login'))
         else:
