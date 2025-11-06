@@ -16,7 +16,7 @@ def run_subprocess():
  
 @app.route("/")
 def index():
-    return render_template("Neo_ui.html")
+    return render_template("index.html")
 
 @app.route("/home")
 def home():
